@@ -1,0 +1,93 @@
+ion-icon {
+  font-size: xx-large;
+}
+
+ion-content {
+  --ion-background-color: rgb(255, 187, 61);
+}
+
+ion-button {
+  font-size: large;
+  --background: orangered;
+  --background-hover: rgb(255, 167, 2);
+  --background-activated: rgb(255, 167, 2);
+  --background-focused: rgb(255, 167, 2);
+}
+
+ion-item {
+  color: black;
+  font-size: large;
+
+  border-bottom: 1px solid orangered;
+}
+
+ion-toolbar {
+  --background: orangered;
+  --color: white;
+}
+
+ion-title {
+  font-size: larger;
+}
+
+ion-back-button {
+  --color: white;
+}
+
+.p-foto {
+  margin-right: 10px;
+  height: auto;
+}
+
+ion-checkbox {
+  --checkbox-background-checked: orangered;
+}
+
+ion-checkbox::part(container) {
+  border-radius: 3px;
+  border: 2px solid orangered;
+}
+
+ion-radio {
+  --border-radius: 3px;
+  --inner-border-radius: 3px;
+
+  --color: orangered;
+  --color-checked: orangered;
+}
+
+ion-radio.ios::part(container) {
+  width: 20px;
+  height: 20px;
+
+  border: 2px solid orangered;
+  border-radius: 3px;
+}
+
+.radio-checked.ios::part(container) {
+  border-color: orangered;
+}
+
+ion-radio-group {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.btn-picture {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 30px;
+  font-size: medium;
+  background-color: orangered;
+}
+
+.porte {
+  font-size: large;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}

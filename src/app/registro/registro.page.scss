@@ -1,0 +1,32 @@
+ion-content {
+  --ion-background-color: rgb(255, 187, 61);
+}
+
+ion-button {
+    font-size: large;
+    --background: orangered;
+    --background-hover: rgb(255, 167, 2);
+    --background-activated: rgb(255, 167, 2);
+    --background-focused: rgb(255, 167, 2);
+}
+
+ion-item {
+    color: black;
+    font-size: large;
+
+    border-bottom: 1px solid orangered;
+}
+
+ion-toolbar {
+    --background: orangered;
+    --color: white;
+  }
+  
+  ion-title {
+    font-size: larger;
+  }
+
+  ion-back-button {
+    --color: white;
+  }
+  

@@ -1,0 +1,98 @@
+ion-content {
+  --ion-background-color: rgb(255, 187, 61);
+}
+
+ion-button {
+  font-size: larger;
+  --background: rgb(255, 113, 62);
+  --background-hover: rgb(255, 167, 2);
+  --background-activated: rgb(255, 167, 2);
+  --background-focused: rgb(255, 167, 2);
+}
+
+ion-item {
+  color: black;
+  font-size: large;
+
+  border-bottom: 1px solid orangered;
+}
+
+ion-toolbar {
+  --background: orangered;
+  --color: white;
+}
+
+ion-title {
+  font-size: larger;
+}
+
+ion-back-button {
+  --color: white;
+}
+
+swiper-container {
+
+  // cor das bolinhas nao selecionadas
+  --swiper-pagination-bullet-inactive-color: black;
+  --swiper-theme-color: orangered;
+
+  // cor das flechas
+  --swiper-navigation-color: orangered;
+
+  //cor da bolinha selecionada
+  --swiper-pagination-color: orangered;
+
+  width: 100%;
+  margin-top: 20%;
+}
+
+swiper-slide {
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-bottom: 10%;
+}
+
+.slide-wraper {
+  padding: 1rem;
+  border-radius: 15px;
+  opacity: 1;
+  background-color: orangered;
+  box-shadow: 10px 10px 8px rgb(255, 113, 62);
+}
+
+.slide-wraper p {
+  text-align: center;
+  color: white
+}
+
+.slide-wraper h3 {
+  margin-top: 0;
+  text-align: center;
+  color: white;
+}
+
+ion-img::part(image) {
+  border-radius: 15px;
+}
+
+.swiper-pagination-bullet{
+  background-color: white !important;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-text {
+  text-align: justify;
+}
+
+#btn-modal {
+  font-size: larger !important;
+  --background: orangered !important;
+}
+
+

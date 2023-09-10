@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Galeria de Cães</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scroll-y="false">
+  <swiper-container
+    [slidesPerView]="1"
+    [loop]="false"
+    [pagination]="true"
+    [navigation]="true"
+  >
+    <swiper-slide *ngFor="let dog of dogs; index as position">
+      <div class="slide-wraper">
+        <h3>Nome: {{dog.nome}}</h3>
+        <ion-img [src]="dog.foto"></ion-img>
+
+        <p>Raça: {{dog.raca}}</p>
+        <p>Sexo: {{dog.sexo}}</p>
+        <p>Idade: {{dog.idade}} anos</p>
+        <p>Vacinado: {{dog.vacinado ? 'Sim':'Não'}}</p>
+        <p>Dócil: {{dog.docil ? 'Sim':'Não'}}</p>
+        <p>Porte: {{dog.porte}}</p>
+        <p>Cor: {{dog.cor}}</p>
+        <p>Características: {{dog.caracteristicas}}</p>
+
+        <ion-button type="submit" expand="block" (click)="adotar(dog)" [disabled]="isReserved(dog.status)"
+          >{{ dog.status == 'DISPONIVEL' ? 'Conhecer' : 'Reservado' }}</ion-button
+        >        
+
+        <ion-modal [isOpen]="isModalOpen">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>Conheça-nos!</ion-title>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding" scroll-y="false">
+              <div class="modal-content">
+                <p class="modal-text">
+                  Reservamos o {{selectedDog}} para que você possa conhecê-lo, e se desejar, poderá adotá-lo após a visita!            
+                </p>
+                <p class="modal-text">
+                  Estamos localizados na Rua Santo Antônio, nº 123, bairro Centro, em São Leopoldo.            
+                </p>
+                <p class="modal-text">
+                  Nosso horário de atendimento para visitas é de segunda à sexta, das 09:00 às 17h.            
+                </p>
+                <ion-button id="btn-modal" (click)="verMapa()"
+                  >Ver no mapa</ion-button
+                >
+              </div>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
+      </div>      
+
+    </swiper-slide>
+  </swiper-container>
+
+
+</ion-content>

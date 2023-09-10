@@ -1,0 +1,79 @@
+#container {
+  text-align: center;
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ion-content.auth-form {
+  --ion-background-color: rgb(255, 187, 61); 
+}
+
+.teste2 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#ocupa-espaco {
+  height: 10%;
+}
+
+#icon-wraper {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: rgb(255, 187, 61);
+}
+
+.options-grid {
+  background-color: rgb(255, 187, 61);
+  height: auto;
+  width: 100%;
+}
+
+ion-button.btn-registrar {
+  font-size: large;
+  --background: orangered;
+  --background-hover: rgb(255, 167, 2);
+  --background-activated: rgb(255, 167, 2);
+  --background-focused: rgb(255, 167, 2);
+}
+
+ion-button.btn-entrar {
+  font-size: large;
+  --background: orangered;
+  --background-hover: rgb(255, 167, 2);
+  --background-activated: rgb(255, 167, 2);
+  --background-focused: rgb(255, 167, 2);
+}
+
+#background-content {
+  background-color: rgb(255, 187, 61);
+}
+
+ion-toolbar {
+  --background: orangered;
+  --color: white;
+}
+
+ion-title {
+  font-size: larger;
+}

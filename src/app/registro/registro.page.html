@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="false">
+  <form>
+    <ion-item lines="none">
+      <ion-input
+        label="Nome"
+        labelPlacement="floating"
+        placeholder="Informe o seu nome"
+        type="text"
+        required
+        [(ngModel)]="nome"
+        name="nome"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">     
+      <ion-input
+        label="Sobrenome"
+        labelPlacement="floating"
+        placeholder="Informe o seu sobrenome"
+        type="text"
+        required
+        [(ngModel)]="sobrenome"
+        name="sobrenome"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">     
+      <ion-input
+        label="E-mail"
+        labelPlacement="floating"
+        placeholder="Informe o email"
+        type="email"
+        required
+        [(ngModel)]="email"
+        name="email"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input 
+        label="Senha"
+        labelPlacement="floating"
+        placeholder="A senha deve conter no mínimo 6 caracteres"
+        type="password"
+        required
+        [(ngModel)]="senha"
+        name="senha"
+      ></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block" (click)="registrar()"
+          >Registrar</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

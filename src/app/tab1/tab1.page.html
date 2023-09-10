@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro de cães</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="false">
+  <form>
+    <ion-item lines="none">
+      <ion-input
+        label="Nome"
+        labelPlacement="floating"
+        placeholder="Informe o nome do animal"
+        type="text"
+        required
+        [(ngModel)]="nome"
+        name="nome"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input
+        label="Raça"
+        labelPlacement="floating"
+        placeholder="Informa a raça, se houver"
+        type="text"
+        required
+        [(ngModel)]="raca"
+        name="raca"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input
+        label="Idade"
+        labelPlacement="floating"
+        placeholder="0"
+        type="number"
+        required
+        [(ngModel)]="idade"
+        name="idade"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input label="Cor" labelPlacement="floating" placeholder="Informa a cor do animal" type="text" required [(ngModel)]="cor" name="cor"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input label="Características" labelPlacement="floating" placeholder="Informe as características do animal"
+        type="text"
+        required
+        [(ngModel)]="caracteristicas"
+        name="caracteristicas"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-checkbox [(ngModel)]="vacinado" name="vacinado"
+        >Vacinado?</ion-checkbox
+      >
+      <br />
+    </ion-item>
+    <ion-item lines="none">
+      <ion-checkbox [(ngModel)]="docil" name="docil">Docil?</ion-checkbox>
+      <br />
+    </ion-item>
+
+    <p class="porte">Porte:</p>
+
+    <ion-item lines="none">
+      <ion-radio-group value="Pequeno" [(ngModel)]="porte" name="porte">
+        <ion-radio value="Pequeno">Pequeno</ion-radio><br />
+        <ion-radio value="Medio">Médio</ion-radio><br />
+        <ion-radio value="Grande">Grande</ion-radio><br />
+      </ion-radio-group>
+    </ion-item>
+
+    <p class="porte">Sexo:</p>
+
+    <ion-item lines="none">
+      <ion-radio-group value="Masculino" [(ngModel)]="sexo" name="sexo">
+        <ion-radio value="Masculino">Masculino</ion-radio><br />
+        <ion-radio value="Feminino">Feminino</ion-radio><br />
+      </ion-radio-group>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-buttons class="btn-picture" (click)="takeDogPhoto()" slot="start">
+        <p class="p-foto">Tirar foto</p>
+        <ion-icon name="camera"></ion-icon>
+      </ion-buttons>
+
+      <ion-buttons class="btn-picture" (click)="choosePicture()" slot="end">
+        <p class="p-foto">Carregar foto</p>
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+
+    <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button (click)="takeDogPhoto()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block" (click)="registrar()"
+          >Registrar</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

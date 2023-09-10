@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-img
+      slot="start"
+      [src]="'../../assets/icon/unisinos_branco.png'"
+    ></ion-img>
+    <ion-title> Dogs App </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form" padding scroll-y="false">
+  <div class="teste2">
+
+    <div id="ocupa-espaco"></div>
+
+    <div id="icon-wraper" style="text-align: center">
+      <img
+        src="../../assets/icon/4540789.png"
+        width="80%"
+        alt="Logo de Localização"
+      />
+    </div>
+    <ion-grid class="options-grid">
+      <ion-row>
+        <ion-col align-self-center>
+          <ion-button
+            class="btn-registrar"
+            [routerLink]="['/registro']"
+            expand="block"
+            >Registrar</ion-button
+          >
+
+          <div class="divider line one-line" style="text-align: center">ou</div>
+
+          <div class="already" style="text-align: center">Já tem registro?</div>
+
+          <ion-button
+            class="btn-entrar"
+            fill="solid"
+            [routerLink]="['/login']"
+            expand="block"
+            >Entrar</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
