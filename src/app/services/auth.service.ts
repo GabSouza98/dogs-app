@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/models';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from '@angular/fire/auth';
 import { UserCredential } from 'firebase/auth';
 import { Database, set, ref, update, get } from '@angular/fire/database';
 import { Router } from '@angular/router';
@@ -12,9 +12,10 @@ export class AuthService {
 
   usuario!: Usuario;
 
-  constructor(public auth: Auth, public db: Database) { }
+  constructor(public auth: Auth, public db: Database, public router: Router) { }
 
   async registrarUsuario(usuario: Usuario) {
+
     this.registrar(usuario)    
     .then(userCredential => {
 
@@ -26,16 +27,14 @@ export class AuthService {
           uid: userCredential.user.uid,
           nome: usuario.nome,
           sobrenome: usuario.sobrenome,
-          email: usuario.email,
-          senha: usuario.senha
+          email: usuario.email
         }
 
         set(ref(this.db, 'users/' + userCredential.user.uid), {
-          uid: userCredential.user.uid, //meio que redundante
+          uid: userCredential.user.uid,
           nome: usuario.nome,
           sobrenome: usuario.sobrenome,
-          email: usuario.email,
-          senha: usuario.senha //remover isso depois
+          email: usuario.email
         })
       }
     });
@@ -43,7 +42,13 @@ export class AuthService {
 
   private async registrar(usuario: Usuario): Promise<UserCredential | null> {
     try {
+
+      if(!usuario.senha) {
+        return null;
+      }
+
       return await createUserWithEmailAndPassword(this.auth, usuario.email, usuario.senha);
+
     } catch (error) {
       console.log(error);
       return null;
@@ -58,20 +63,13 @@ export class AuthService {
 
         const uuid = userCredential.user.uid;
 
-        console.log('Logado: ' + uuid);
-
         await update(ref(this.db, 'users/' + uuid), {
           last_login: new Date()
         });
         
         await get(ref(this.db, 'users/' + uuid)).then((snapshot) => {
           if (snapshot.exists()) {
-            console.log(snapshot.val());
-
             this.usuario = snapshot.val() as Usuario;
-
-            console.log('resultado do usuario:');
-            console.log(this.usuario);
           } else {
             console.log("No data available");
           }
@@ -79,7 +77,7 @@ export class AuthService {
           console.error(error);
         });
 
-        console.log(this.usuario);
+        // console.log(this.usuario);
         if (callback) {
           callback(this.usuario, nav);
         }
@@ -102,6 +100,33 @@ export class AuthService {
     }).catch((error) => {
       //An error happened
     });
+  }
+
+  async googleSignIn() {
+
+    const provider = new GoogleAuthProvider();
+
+    // Falha
+    // await signInWithRedirect(this.auth, provider);
+    // const userCred = await getRedirectResult(this.auth);
+    // console.log(userCred);
+    
+    return signInWithPopup(this.auth, provider).then(res => {
+
+      const userCredential = res.user;
+
+      this.usuario = {
+        uid: userCredential.uid,
+        nome: userCredential.displayName ?? '',
+        email: userCredential.email ?? '',
+      }
+
+      this.router.navigate(['menu']);
+      localStorage.setItem('token', JSON.stringify(res.user?.uid));
+
+    }, err => {
+      console.log(err.message);
+    })
   }
 
 }

@@ -1,9 +1,9 @@
 export interface Usuario {
     uid?: string;
     nome: string;
-    sobrenome: string;
+    sobrenome?: string;
     email: string;
-    senha: string;
+    senha?: string;
     
     last_login?: string;
     latitude?: number;

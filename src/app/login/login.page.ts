@@ -22,7 +22,6 @@ export class LoginPage implements OnInit {
     try {
       this.authSrv.logarUsuario(this.email, this.senha, this.router,
         function(user: Usuario, nav: Router) {
-          console.log('Entrou como ' + user.nome);
           nav.navigate(['menu']);
         });
     } catch (e) {

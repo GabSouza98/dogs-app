@@ -10,7 +10,6 @@
 
 <ion-content class="auth-form" padding scroll-y="false">
   <div class="teste2">
-
     <div id="ocupa-espaco"></div>
 
     <div id="icon-wraper" style="text-align: center">
@@ -27,7 +26,7 @@
             class="btn-registrar"
             [routerLink]="['/registro']"
             expand="block"
-            >Registrar</ion-button
+            >Cadastrar</ion-button
           >
 
           <div class="divider line one-line" style="text-align: center">ou</div>
@@ -39,7 +38,17 @@
             fill="solid"
             [routerLink]="['/login']"
             expand="block"
-            >Entrar</ion-button
+            >Entrar com email e senha</ion-button
+          >
+
+          <div class="divider line one-line" style="text-align: center">ou</div>
+
+          <ion-button
+            (click)="googleSignIn()"
+            class="btn-entrar"
+            fill="solid"
+            expand="block"
+            >Entrar com Google</ion-button
           >
         </ion-col>
       </ion-row>

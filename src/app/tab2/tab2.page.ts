@@ -27,7 +27,7 @@ export class Tab2Page {
 
   async ngOnInit() {
     this.dogs = await this.dogService.getDogs();
-    console.log(this.dogs);
+    // console.log(this.dogs);
   }
 
   async adotar(dog: Dog) {

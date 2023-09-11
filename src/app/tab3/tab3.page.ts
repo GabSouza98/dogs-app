@@ -35,19 +35,11 @@ export class Tab3Page {
   ionViewDidEnter() {
     this.platform.ready().then(() => {
 
-      console.log(this.authService.usuario); //esta logando {}
-
       if (!this.authService.usuario) {
         this.router.navigate(['login']);
       } else {
-
-        //Essa parte só funciona se o usuario estiver definido
-        // this.latitude = this.authService.usuario.latitude ? this.authService.usuario.latitude : unisinosLocation.lat;
-        // this.longitude = this.authService.usuario.longitude ? this.authService.usuario.longitude : unisinosLocation.lng;
-
         this.latitude = unisinosLocation.lat;
         this.longitude = unisinosLocation.lng;
-
         this.carregarMapa();
       }
     }

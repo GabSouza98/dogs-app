@@ -31,6 +31,7 @@ export class Tab1Page {
     private storageService: StorageService) { }
 
   ngOnInit() {
+    console.log(this.authSrv.usuario);
   }
 
   async registrar() {
