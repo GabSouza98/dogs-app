@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Usuario, Dog } from '../models/models';
+import { Usuario, Dog, StatusEnum } from '../models/models';
 import { Database, set, ref, update, get, onValue } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { v4 as uuid } from 'uuid';
@@ -53,6 +53,8 @@ export class DogsService {
           this.dogs.push(dogsArray[key] as Dog);
         });
 
+        this.dogs = this.dogs.filter((dog) => dog.status != StatusEnum.ADOTADO);
+
       } else {
         console.log('No data');
       }
@@ -68,7 +70,21 @@ export class DogsService {
     await update(ref(this.db, 'dogs/' + uid), {
       status: 'RESERVADO'
     });
-    console.log('Status alterado');
+    console.log('Dog Reservado');
+  }
+
+  async liberar(uid: string | undefined) {
+    await update(ref(this.db, 'dogs/' + uid), {
+      status: 'DISPONIVEL'
+    });
+    console.log('Dog Disponivel');
+  }
+
+  async adotado(uid: string | undefined) {
+    await update(ref(this.db, 'dogs/' + uid), {
+      status: 'ADOTADO'
+    });
+    console.log('Dog Adotado');
   }
 
 }

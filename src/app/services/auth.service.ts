@@ -77,7 +77,6 @@ export class AuthService {
           console.error(error);
         });
 
-        // console.log(this.usuario);
         if (callback) {
           callback(this.usuario, nav);
         }
@@ -105,11 +104,6 @@ export class AuthService {
   async googleSignIn() {
 
     const provider = new GoogleAuthProvider();
-
-    // Falha
-    // await signInWithRedirect(this.auth, provider);
-    // const userCred = await getRedirectResult(this.auth);
-    // console.log(userCred);
     
     return signInWithPopup(this.auth, provider).then(res => {
 

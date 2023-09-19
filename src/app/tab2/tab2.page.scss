@@ -43,7 +43,7 @@ swiper-container {
   --swiper-pagination-color: orangered;
 
   width: 100%;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 
 swiper-slide {
@@ -93,6 +93,18 @@ ion-img::part(image) {
 #btn-modal {
   font-size: larger !important;
   --background: orangered !important;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: smaller;
+}
+
+.wrapper ion-button {
+  width: 50%;
 }
 
 

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { PhotoService, UserPhoto } from '../services/photo.service';
 import { ActionSheetController } from '@ionic/angular';
 import { DogsService } from '../services/dogs.service';
-import { Dog } from '../models/models';
+import { Dog, StatusEnum } from '../models/models';
 import { register } from 'swiper/element/bundle';
 import { SwiperOptions } from 'swiper/types/swiper-options';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 register();
 
@@ -23,17 +24,11 @@ export class Tab2Page {
   constructor(public photoService: PhotoService,
     public actionSheetController: ActionSheetController,
     public dogService: DogsService,
-    public router: Router) { }
+    public router: Router,
+    private authService: AuthService) { }
 
   async ngOnInit() {
     this.dogs = await this.dogService.getDogs();
-    // console.log(this.dogs);
-  }
-
-  async adotar(dog: Dog) {
-    this.selectedDog = dog.nome;
-    await this.dogService.reservar(dog.uid);
-    this.setOpen(true);
   }
 
   verMapa() {
@@ -57,37 +52,43 @@ export class Tab2Page {
     return status != 'DISPONIVEL' ? true : false
   }
 
-  // addPhotoToGallery() {
-  //   this.photoService.addNewToGallery();
-  // }
-
-  // public async showActionSheet(photo: UserPhoto, position: number) {
-  //   const actionSheet = await this.actionSheetController.create({
-  //     header: 'Photos',
-  //     buttons: [
-  //       {
-  //         text: 'Delete',
-  //         role: 'destructive',
-  //         icon: 'trash',
-  //         handler: () => {
-  //           this.photoService.deletePicture(photo, position);
-  //         }
-  //       },
-  //       {
-  //         text: 'Cancel',
-  //         role: 'cancel',
-  //         icon: 'close',
-  //         handler: () => {
-  //           //Nothing to do, action sheet is automatically closed
-  //         }
-  //       }
-  //     ]
-  //   });    
-  //   await actionSheet.present();
-  // }
-
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  validateAdmin() {
+    return this.authService.usuario.admin == true;
+  }
+
+  async adotar(dog: Dog) {
+    this.selectedDog = dog.nome;
+    await this.dogService.reservar(dog.uid);
+    this.setOpen(true);
+    dog.status = StatusEnum.RESERVADO;
+  }
+
+  async liberar(dog: Dog) {
+    await this.dogService.liberar(dog.uid);
+    dog.status = StatusEnum.DISPONIVEL;
+  }
+
+  async adotado(dog: Dog) {
+    await this.dogService.adotado(dog.uid);
+    dog.status = StatusEnum.ADOTADO;
+  }
+
+  getStatus(status: string | undefined) {
+    status = status ?? StatusEnum.RESERVADO;
+    switch(status) {
+      case StatusEnum.DISPONIVEL:
+        return 'Conhecer';
+      case StatusEnum.RESERVADO:
+        return 'Reservado';
+      case StatusEnum.ADOTADO:
+        return 'Adotado';
+      default:
+        return 'Reservado';
+    }
   }
 
 }

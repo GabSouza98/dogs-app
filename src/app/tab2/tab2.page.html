@@ -28,9 +28,30 @@
         <p>Cor: {{dog.cor}}</p>
         <p>Características: {{dog.caracteristicas}}</p>
 
-        <ion-button type="submit" expand="block" (click)="adotar(dog)" [disabled]="isReserved(dog.status)"
-          >{{ dog.status == 'DISPONIVEL' ? 'Conhecer' : 'Reservado' }}</ion-button
-        >        
+        <ion-button
+          type="submit"
+          expand="block"
+          (click)="adotar(dog)"
+          [disabled]="isReserved(dog.status)"
+          >{{ getStatus(dog.status) }}
+        </ion-button>
+
+        <div class="wrapper" *ngIf="validateAdmin() && dog.status == 'RESERVADO'">
+          <ion-button
+            type="submit"
+            expand="block"
+            (click)="liberar(dog)"
+            [disabled]="!isReserved(dog.status)"
+            >Liberado</ion-button
+          >
+          <ion-button
+            type="submit"
+            expand="block"
+            (click)="adotado(dog)"
+            [disabled]="!isReserved(dog.status)"
+            >Adotado</ion-button
+          >
+        </div>
 
         <ion-modal [isOpen]="isModalOpen">
           <ng-template>
@@ -42,13 +63,16 @@
             <ion-content class="ion-padding" scroll-y="false">
               <div class="modal-content">
                 <p class="modal-text">
-                  Reservamos o {{selectedDog}} para que você possa conhecê-lo, e se desejar, poderá adotá-lo após a visita!            
+                  Reservamos o {{selectedDog}} para que você possa conhecê-lo, e
+                  se desejar, poderá adotá-lo após a visita!
                 </p>
                 <p class="modal-text">
-                  Estamos localizados na Rua Santo Antônio, nº 123, bairro Centro, em São Leopoldo.            
+                  Estamos localizados na Rua Santo Antônio, nº 123, bairro
+                  Centro, em São Leopoldo.
                 </p>
                 <p class="modal-text">
-                  Nosso horário de atendimento para visitas é de segunda à sexta, das 09:00 às 17h.            
+                  Nosso horário de atendimento para visitas é de segunda à
+                  sexta, das 09:00 às 17h.
                 </p>
                 <ion-button id="btn-modal" (click)="verMapa()"
                   >Ver no mapa</ion-button
@@ -57,11 +81,7 @@
             </ion-content>
           </ng-template>
         </ion-modal>
-
-      </div>      
-
+      </div>
     </swiper-slide>
   </swiper-container>
-
-
 </ion-content>
