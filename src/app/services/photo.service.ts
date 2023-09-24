@@ -24,7 +24,7 @@ export class PhotoService {
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
       quality: 100,
-      allowEditing: true
+      allowEditing: false
     });
 
     // Save the picture and add it to photo collection
@@ -156,7 +156,7 @@ export class PhotoService {
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
       quality: 100,
-      allowEditing: true
+      allowEditing: false
     });
 
     const base64Data: string = await this.readAsBase64(capturedPhoto);
