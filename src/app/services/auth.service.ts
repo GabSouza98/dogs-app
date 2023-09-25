@@ -20,7 +20,6 @@ export class AuthService {
     .then(userCredential => {
 
       if (userCredential) {
-        console.log('Regitrado: ' + userCredential.user.uid);
 
         //Preencher o usuario
         this.usuario = {
@@ -42,7 +41,7 @@ export class AuthService {
 
   private async registrar(usuario: Usuario): Promise<UserCredential | null> {
     try {
-
+      
       if(!usuario.senha) {
         return null;
       }

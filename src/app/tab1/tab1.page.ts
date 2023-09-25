@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { DogsService } from '../services/dogs.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { Dog, PORTE } from '../models/models';
+import { Dog } from '../models/models';
 import { PhotoService } from '../services/photo.service';
-import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-tab1',
@@ -27,11 +26,9 @@ export class Tab1Page {
   constructor(private authSrv: AuthService, 
     private router: Router, 
     private dogService: DogsService,
-    private photoService: PhotoService,
-    private storageService: StorageService) { }
+    private photoService: PhotoService) { }
 
   ngOnInit() {
-    console.log(this.authSrv.usuario);
   }
 
   async registrar() {
@@ -50,8 +47,6 @@ export class Tab1Page {
     }
 
     await this.dogService.registrarDog(dog);
-
-    console.log('dog salvou');
 
     this.resetForm();
   }

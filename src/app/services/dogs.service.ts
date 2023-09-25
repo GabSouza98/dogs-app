@@ -32,8 +32,6 @@ export class DogsService {
       foto: dog.foto,
       status: 'DISPONIVEL'
     })
-
-    console.log('Dog saved succesfully');
   }
 
   async getDogs(): Promise<Dog[]> {
@@ -70,21 +68,18 @@ export class DogsService {
     await update(ref(this.db, 'dogs/' + uid), {
       status: 'RESERVADO'
     });
-    console.log('Dog Reservado');
   }
 
   async liberar(uid: string | undefined) {
     await update(ref(this.db, 'dogs/' + uid), {
       status: 'DISPONIVEL'
     });
-    console.log('Dog Disponivel');
   }
 
   async adotado(uid: string | undefined) {
     await update(ref(this.db, 'dogs/' + uid), {
       status: 'ADOTADO'
     });
-    console.log('Dog Adotado');
   }
 
 }

@@ -79,23 +79,12 @@ export class Tab3Page {
         icon: icon
       });
 
-      // const gloc2 = new google.maps.LatLng(this.latitude, this.longitude);
-      // const marker2 = new google.maps.Marker({
-      //   position: gloc2,
-      //   map: this.map,
-      //   icon: 'assets/icon/character.png'
-      // });
-
       this.map.addListener('dragend', () => {
         this.latitude = this.map.center.lat();
         this.longitude = this.map.center.lng();
       });
 
     });
-  }
-
-  atualizarLocalizacao() {
-    // this.authService.atualizarDadosUsuario(this.latitude, this.longitude);
   }
 
 }

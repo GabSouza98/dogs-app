@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PhotoService, UserPhoto } from '../services/photo.service';
+import { PhotoService } from '../services/photo.service';
 import { ActionSheetController } from '@ionic/angular';
 import { DogsService } from '../services/dogs.service';
 import { Dog, StatusEnum } from '../models/models';
